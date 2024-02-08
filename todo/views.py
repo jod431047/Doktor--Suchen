@@ -5,4 +5,6 @@ from django.contrib.auth.models import User
 
 def doctors_list(request):
     doctors = User.objects.all()
-    return render(request , 'user/app.html', {})
+    return render(request , 'user/doctors_list.html', {
+        'doctors' : doctors,
+    })
