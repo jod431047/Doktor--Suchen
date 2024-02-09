@@ -7,8 +7,8 @@ class Profile(models.Model):
     name = models.CharField(_("name:"),max_length=50)
     who_i = models.TextField(_("who I am:"),max_length=250)
     price = models.IntegerField(_("disclosure price:"))
-    
-    
+    image = models.ImageField(_("personal poto"),upload_to='profile')
+                                  
     class Meta:
         verbose_name = ("Profile")
         verbose_name_plural = ("Profiles")
