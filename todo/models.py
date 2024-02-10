@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
-
+from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.ForeignKey(User , verbose_name=("user"), on_delete=models.CASCADE)
@@ -18,3 +18,7 @@ class Profile(models.Model):
         return '%s' %(self.name)
     
     
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        Profile.objects.create(user=kwargs['instance'])
