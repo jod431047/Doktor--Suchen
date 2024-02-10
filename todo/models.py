@@ -7,7 +7,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User , verbose_name=("user"), on_delete=models.CASCADE)
     name = models.CharField(_("name:"),max_length=50)
     who_i = models.TextField(_("wer ich bin:"),max_length=250)
-    price = models.IntegerField(_("untersuchengs price:"))
+    price = models.IntegerField(_("untersuchengs price:"),blank=True,null=True)
     image = models.ImageField(_("personal foto"),upload_to='profile')
                                   
     class Meta:
@@ -22,3 +22,5 @@ class Profile(models.Model):
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         Profile.objects.create(user=kwargs['instance'])
+        
+post_save.connect(create_profile , sender=User)       
