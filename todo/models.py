@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save
+from django.utils.text import slugify
 
 class Profile(models.Model):
     user = models.ForeignKey(User , verbose_name=("user"), on_delete=models.CASCADE)
@@ -9,6 +10,7 @@ class Profile(models.Model):
     who_i = models.TextField(_("wer ich bin:"),max_length=250)
     price = models.IntegerField(_("untersuchengs price:"),blank=True,null=True)
     image = models.ImageField(_("personal foto"),upload_to='profile',blank=True,null=True)
+    slug = models.SlugField(null=True,blank=True)
                                   
     class Meta:
         verbose_name = ("Profile")
