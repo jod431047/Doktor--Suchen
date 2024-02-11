@@ -19,7 +19,12 @@ class Profile(models.Model):
     def __str__(self):
         return '%s' %(self.name)
     
-    
+    def save(self, *args ,**kwargs):
+        if not self.slug:
+            self.slug = slugify (self.user.username)
+        super(Profile,self).save( *args ,**kwargs)
+
+
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
