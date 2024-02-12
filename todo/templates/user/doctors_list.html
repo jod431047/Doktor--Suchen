@@ -14,12 +14,11 @@
                 <div class="jobs_left d-flex align-items-center">
                     <div>
 
-                      {% if doctor.profile.image.url %}
-
+                        {% if doctor.profile.image %}
                          <img  src="{{doctor.profile.image.url}}" alt="" width="100" height="100">
-                      {% else %}
-                         <img  src="{% static 'static_file/img/candiateds/1.png'  %}" alt="" width="100" height="100">
-                      {%  endif  %}
+                         {% else %}
+                         <img  src="{% static 'static_file/img/canddiateds/2.png' %}" alt="" width="100" height="100">
+                        {% endif %}
 
                     </div>
                     <div class="jobs_conetent">

@@ -5,7 +5,7 @@ from .models import Profile
 
 
 def doctors_list(request):
-    doctors = Profile.objects.all()
+    doctors = User.objects.all()
     return render(request , 'user/doctors_list.html', {
         'doctors' : doctors,
     })
